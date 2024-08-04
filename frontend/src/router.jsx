@@ -4,6 +4,7 @@ import Cart from "./components/Cart";
 import Home from "./components/Home";
 import MainLayout from "./Layout/MainLayout";
 import NotFound from "./components/NotFound";
+import { ToastContainer } from "react-toastify";
 
 const router = createBrowserRouter([
   {

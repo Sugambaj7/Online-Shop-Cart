@@ -1,8 +1,19 @@
 import React from "react";
 import { useGetAllProductsQuery } from "../features/productsAPI";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { addToCart } from "../features/cartSlice";
 
 const Home = () => {
   const { data, error, isLoading } = useGetAllProductsQuery();
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product));
+    navigate("/cart");
+  };
   return (
     <div>
       <div className="home-container">
@@ -29,9 +40,14 @@ const Home = () => {
                   />
                   <div className="details-section flex justify-between items-center">
                     <span>{product.desc}</span>
-                    <span className="text-xl font-semibold">{product.price}</span>
+                    <span className="text-xl font-semibold">
+                      {product.price}
+                    </span>
                   </div>
-                  <button className="bg-blue-500 py-1 px-3 text-white rounded w-[100%] h-9 flex justify-center items-center mt-8 font-semibold cursor-pointer tracking-wide">
+                  <button
+                    onClick={() => handleAddToCart(product)}
+                    className="bg-blue-500 py-1 px-3 text-white rounded w-[100%] h-9 flex justify-center items-center mt-8 font-semibold cursor-pointer tracking-wide"
+                  >
                     Add to Cart
                   </button>
                 </div>
