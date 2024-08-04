@@ -3,7 +3,7 @@ const products = [
     id: 1,
     name: "Iphone 12 pro max",
     desc: "14 inch display",
-    price: "200$",
+    price: 200,
     image:
       "https://res.cloudinary.com/dgzbeu8ox/image/upload/v1722616496/iphone_12_pro_max_p_cm7sui.jpg",
   },
@@ -11,7 +11,7 @@ const products = [
     id: 2,
     name: "Iphone 11 pro max",
     desc: "12 inch display",
-    price: "100$",
+    price: 100,
     image:
       "https://res.cloudinary.com/dgzbeu8ox/image/upload/v1722616496/iphone_11_pro_max_p_dv5gaw.jpg",
   },
@@ -19,7 +19,7 @@ const products = [
     id: 3,
     name: "Iphone x",
     desc: "10 inch display",
-    price: "50$",
+    price: 50,
     image:
       "https://res.cloudinary.com/dgzbeu8ox/image/upload/v1722616497/iphone_x_p_ibfwpx.jpg",
   },
@@ -27,7 +27,7 @@ const products = [
     id: 4,
     name: "Iphone 6",
     desc: "4 inch display",
-    price: "24$",
+    price: 24,
     image:
       "https://res.cloudinary.com/dgzbeu8ox/image/upload/v1722616499/iphone6_p_kgurnt.jpg",
   },

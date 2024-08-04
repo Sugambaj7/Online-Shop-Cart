@@ -15,6 +15,10 @@ export default {
       },
       colors: {
         semi_black: "rgb(68,68,68)",
+        custom_black: "rgb(187, 187, 187)",
+      },
+      gridTemplateColumns: {
+        custom_cart_items_layout: "3fr 1fr 1fr 1fr",
       },
     },
   },

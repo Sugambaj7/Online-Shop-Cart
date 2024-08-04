@@ -41,7 +41,7 @@ const Home = () => {
                   <div className="details-section flex justify-between items-center">
                     <span>{product.desc}</span>
                     <span className="text-xl font-semibold">
-                      {product.price}
+                      ${product.price}
                     </span>
                   </div>
                   <button
