@@ -34,8 +34,18 @@ const cartSlice = createSlice({
       }
       localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
     },
+    removeItemFromCart(state, action) {
+      const remainingCartItems = state.cartItems.filter(
+        (cartItem) => cartItem.id !== action.payload.id
+      );
+      state.cartItems = remainingCartItems;
+      localStorage.setItem("cartItems", JSON.stringify(state.cartItems));
+      toast.error(`${action.payload.name} removed from cart`, {
+        position: "bottom-left",
+      });
+    },
   },
 });
 
-export const { addToCart } = cartSlice.actions;
+export const { addToCart, removeItemFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

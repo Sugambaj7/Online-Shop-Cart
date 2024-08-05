@@ -2,9 +2,17 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { GoArrowLeft } from "react-icons/go";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { removeItemFromCart } from "../features/cartSlice";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
+
+  const handleRemoveItemFromCart = (cartItem) => {
+    console.log(cartItem, "remove item id");
+    dispatch(removeItemFromCart(cartItem));
+  };
 
   return (
     <div className="cart-container">
@@ -45,7 +53,10 @@ const Cart = () => {
                   <div className="flex flex-col pl-8">
                     <h3 className="text-xl font-semibold">{cartItem.name}</h3>
                     <p className="text-sm">{cartItem.desc}</p>
-                    <button className="text-gray-500 hover:text-gray-700">
+                    <button
+                      className="text-gray-500 hover:text-gray-700"
+                      onClick={() => handleRemoveItemFromCart(cartItem)}
+                    >
                       Remove
                     </button>
                   </div>
