@@ -1,18 +1,27 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useSelector } from "react-redux";
 import { GoArrowLeft } from "react-icons/go";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { removeItemFromCart } from "../features/cartSlice";
+import { removeItemFromCart, clearCart, removeItemByOneFromCart, addToCart, calculateSubTotals } from "../features/cartSlice";
 
 const Cart = () => {
-  const cart = useSelector((state) => state.cart);
+
+    const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(calculateSubTotals());
+  }, [cart.cartItems, dispatch]);
+
 
   const handleRemoveItemFromCart = (cartItem) => {
     console.log(cartItem, "remove item id");
     dispatch(removeItemFromCart(cartItem));
   };
+
+
 
   return (
     <div className="cart-container">
@@ -63,11 +72,11 @@ const Cart = () => {
                 </div>
                 <div className="cart-product-price">${cartItem.price}</div>
                 <div className="cart-product-quantity flex justify-center w-[130px]">
-                  <button className="bg-slate-300 px-2 rounded text-white">
+                  <button className="bg-slate-300 px-2 rounded text-white" onClick={() =>dispatch( removeItemByOneFromCart(cartItem))}>
                     -
                   </button>
                   <div className="count px-4">{cartItem.cartQuantity}</div>
-                  <button className="bg-slate-300 px-2 rounded text-white">
+                  <button className="bg-slate-300 px-2 rounded text-white" onClick={() => dispatch(addToCart(cartItem))}>
                     +
                   </button>
                 </div>
@@ -78,16 +87,14 @@ const Cart = () => {
             ))}
           </div>
           <div className="cart-summary flex justify-between mt-8">
-            <button className="clear-cart border border-custom_black px-8 h-9 text-semi_black rounded-md">
-              {" "}
+            <button className="clear-cart border border-custom_black px-8 h-9 text-semi_black rounded-md" onClick={() => dispatch(clearCart())}>
               Clear Cart
             </button>
             <div className="cart-checkout">
               <div className="subtotal flex justify-between">
                 <span className="font-semibold text-xl">Subtotal</span>
                 <span className="font-semibold text-xl">
-                  {" "}
-                  $0{cart.cartItems.cartTotalAmount}
+                 ${cart.cartTotalAmount}
                 </span>
               </div>
               <p className="font-extralight text-sm mt-1 mb-3 tracking-wide">

@@ -20,7 +20,7 @@ const Home = () => {
         {isLoading ? (
           <p>Loading....</p>
         ) : error ? (
-          <p>An error occurred...</p>
+          <p>An error occurred...{error}</p>
         ) : (
           <>
             <h2 className="text-h2 font-semibold text-center mt-4">
